@@ -1,21 +1,16 @@
-import { 
-  ref, 
-  computed
-} from 'vue';
-import { useCheckoutStore } from '../store/checkout';
+import { useCheckoutStore } from "../store/checkout";
 
 export default function useCheckout(checkoutStore = useCheckoutStore()) {
-
-  const checkoutStripe = async (payload) => {
+  const createOrder = async (payload) => {
     try {
-      const response = await checkoutStore.example(payload);
+      const response = await checkoutStore.createOrder(payload);
       return response;
     } catch (error) {
-      console.error('Failed to login', error);
+      console.error("Failed to create order", error);
     }
   };
 
   return {
-    checkoutStripe,
-  }
-};
+    createOrder,
+  };
+}
