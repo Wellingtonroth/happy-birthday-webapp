@@ -5,8 +5,9 @@
       <input v-model="name" type="text" placeholder="Recipient Name" class="input" required />
       <input v-model="age" type="number" placeholder="Recipient Age" class="input" required />
       <input v-model="email" type="email" placeholder="Your Email" class="input" required />
+      <input v-model="message" type="text" placeholder="Personalized Message" class="input" />
       <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg mt-4">
-        Pay with Stripe
+        Checkout
       </button>
     </form>
   </div>
@@ -19,17 +20,24 @@ import useCheckout from "../../../composables/useCheckout";
 const name = ref("");
 const age = ref("");
 const email = ref("");
+const message = ref("");
 
-const { checkoutStripe } = useCheckout();
+const { createOrder } = useCheckout();
 
 const handleCheckout = async () => {
-  const paylaod = {
+  const payload = {
     name: name.value,
     age: age.value,
     email: email.value,
+    message: message.value,
   };
 
-  checkoutStripe(paylaod);
+  const response = await createOrder(payload);
+  if (response?.url) {
+    window.location.href = response.url;
+  } else {
+    alert("Order created successfully!");
+  }
 };
 </script>
 

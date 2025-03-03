@@ -2,7 +2,8 @@ const serverUrl = 'http://localhost:5000'; // This should match your backend ser
 // example const server = 'https://myapp.herokuapp.com';
 
 const base = {
-  example: `${serverUrl}/api/example`,
+  checkout: `${serverUrl}/api/checkout`,
+  getOrderById: `${serverUrl}/api/order/:id`,
 };
 
 export default base;

@@ -1,11 +1,24 @@
 <template>
-  <div class="text-center p-10">
-    <h1 class="text-4xl font-bold text-green-500">🎂 Happy Birthday, [Name]! 🎉</h1>
-    <p>Welcome to your personalized birthday page!</p>
+  <div class="max-w-lg mx-auto p-8">
+    happybirthdayyy
   </div>
 </template>
 
-
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
+import useBirthday from "../../../composables/useBirthday";
+
+const { getOrderById } = useBirthday();
+
 </script>
+
+<style scoped>
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+</style>

@@ -1,19 +1,19 @@
-import { defineStore } from 'pinia';
-import api from '../services/api/checkout';
+import { defineStore } from "pinia";
+import api from "../services/api/checkout";
 
-export const useCheckoutStore = defineStore('checkout', {
+export const useCheckoutStore = defineStore("checkout", {
   state: () => ({
     isLoading: false,
   }),
   actions: {
-    async example() {
+    async createOrder(payload) {
       try {
         this.isLoading = true;
-        console.log('entrei store');
-        const response = await api.example();
-        return response;
+        const response = await api.createOrder(payload);
+        return response.data;
       } catch (error) {
-        console.error('exampple error:', error);
+        console.error("Error creating order:", error);
+        return null;
       } finally {
         this.isLoading = false;
       }
