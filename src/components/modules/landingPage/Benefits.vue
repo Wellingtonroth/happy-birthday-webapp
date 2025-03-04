@@ -17,11 +17,6 @@
         :key="index"
         :class="feature.highlight ? 'highlight-feature' : ''"
       >
-        <img 
-          alt="Feature Image"
-          class="w-20 mx-auto mb-4"
-          :src="feature.image" 
-         >
         <h4 class="text-lg font-semibold mb-2 text-yellow-500">
           {{ feature.title }}
         </h4>

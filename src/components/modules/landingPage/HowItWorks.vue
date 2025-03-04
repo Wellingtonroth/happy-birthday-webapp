@@ -20,11 +20,6 @@
             Step {{ index + 1 }}
           </span>
         </div>
-        <img 
-          :src="step.image" 
-          alt="Step Image"
-          class="w-24 mx-auto mb-4 rounded-lg shadow-md"
-        >
         <h4 class="text-xl font-bold text-gray-800 mb-2">
           {{ step.title }}
         </h4>

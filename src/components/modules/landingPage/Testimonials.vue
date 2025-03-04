@@ -9,7 +9,6 @@
         class="bg-white p-8 rounded-3xl shadow-xl border transition-all duration-300 transform scale-105 flex flex-col items-center relative max-w-xs md:max-w-2xl mx-auto"
         v-if="testimonials.length"
       >
-        <!-- Profile Image Inside the Card -->
         <img 
           v-if="testimonials[currentTestimonial].image"
           :src="testimonials[currentTestimonial].image" 
@@ -26,7 +25,6 @@
         </h4>
       </div>
 
-      <!-- Navigation Buttons (Positioned Correctly) -->
       <button 
         class="absolute left-2 md:-left-12 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition cursor-pointer"
         @click="prevTestimonial"
