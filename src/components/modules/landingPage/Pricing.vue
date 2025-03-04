@@ -56,11 +56,9 @@
 </template>
 
 <script setup>
-import CTAButton from "../../shared/CTAButton.vue";
-
 const pricingOptions = [
   {
-    title: "One-Time Purchase",
+    title: "Basic Purchase",
     price: "$4.89",
     oldPrice: null, 
     benefits: [
