@@ -3,7 +3,11 @@
   <section class="py-6 px-6 text-center bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg shadow-lg my-8 mx-auto max-w-5xl md:px-12">
     <div class="flex flex-col md:flex-row items-center justify-between text-left">
       <div class="w-full md:w-1/3 mb-6 md:mb-0 flex justify-center">
-        <img src="../../../assets/qrcode.png" alt="QR Code" class="w-32 md:w-40 rounded-lg shadow-lg">
+        <img 
+          class="w-32 md:w-40 rounded-lg shadow-lg"
+          alt="QR Code" 
+          src="../../../assets/qrcode.png" 
+        >
       </div>
       <div class="w-full md:w-2/3 text-center md:text-left">
         <h2 class="text-2xl md:text-3xl font-bold text-blue-600 leading-tight">
