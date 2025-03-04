@@ -27,7 +27,6 @@ const steps = ref([
 </script>
 
 <style scoped>
-/* Add some celebration animations */
 @keyframes pop {
   0% { transform: scale(1); }
   50% { transform: scale(1.02); }

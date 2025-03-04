@@ -6,6 +6,7 @@
     <Benefits />
     <Pricing />
     <Testimonials />
+    <QRCodeCTA />
     <FAQ />
   </header>
   
@@ -20,6 +21,7 @@ import Benefits from './Benefits.vue';
 import Pricing from './Pricing.vue';
 import Testimonials from './Testimonials.vue';
 import FAQ from './FAQ.vue';
+import QRCodeCTA from './QRCodeCTA.vue';
 import Footer from '../../shared/Footer.vue';
 import Navigation from '../../shared/Navigation.vue';
 </script>
