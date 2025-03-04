@@ -14,7 +14,7 @@
           Let's make a surprise!<br /> 
           Create your Birthday Page Now!
         </h2>
-        <p class="text-base md:text-lg text-gray-700 mt-3 mb-3">
+        <p class="text-base md:text-lg text-gray-700 mt-3 mb-6">
           Set up a unique, lifetime birthday website in just a few minutes!<br />
           Get a personalized link and a QR code to share the joy instantly.
         </p>

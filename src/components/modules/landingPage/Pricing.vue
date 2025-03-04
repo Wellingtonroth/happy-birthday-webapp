@@ -47,6 +47,7 @@
         <button 
           class="w-full py-3 rounded-lg font-bold transition cursor-pointer"
           :class="plan.featured ? 'bg-yellow-400 text-gray-900 hover:bg-yellow-500' : 'bg-blue-600 text-white hover:bg-blue-700'"
+          @click="redirectToCheckout"
         >
           {{ plan.buttonText }}
         </button>
@@ -87,4 +88,8 @@ const pricingOptions = [
     featured: true 
   }
 ];
+
+const redirectToCheckout = () => {
+  window.location.href = "/checkout";
+};
 </script>
