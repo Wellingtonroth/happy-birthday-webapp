@@ -3,6 +3,8 @@ import LandingPage from "../views/LandingPageView.vue";
 import Checkout from "../views/CheckoutView.vue";
 import CheckoutPending from "../views/CheckoutPendingView.vue";
 import Birthday from "../views/BirthdayView.vue";
+import PrivacyPolicyView from "../views/PrivacyPolicyView.vue";
+import TermsOfUseView from "../views/TermsOfUseView.vue";
 import useBirthday from "../composables/useBirthday";
 
 const routes = [
@@ -36,6 +38,14 @@ const routes = [
       }
       return next("/checkout/pending");
     },
+  },
+  {
+    path: "/privacy-policy",
+    component: PrivacyPolicyView,
+  },
+  {
+    path: "/terms-of-use",
+    component: TermsOfUseView,
   }
 ];
 
