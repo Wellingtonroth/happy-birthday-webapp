@@ -4,12 +4,10 @@
       <h1 class="text-4xl lg:text-5xl font-extrabold text-[#2D3436] leading-tight">
         Create a Unique & Personalized Birthday Website in Minutes
       </h1>
-      <p class="text-lg text-[#555] mt-4">
+      <p class="text-lg text-[#555] my-4">
         Surprise your loved ones with a customized birthday page filled with heartfelt messages, photos, and special themes!
-      </p>
-      <button class="mt-6 bg-[#4A90E2] text-white text-lg px-8 py-3 rounded-lg shadow-lg hover:bg-[#357ABD] transition">
-        Get Started
-      </button>
+      </p> 
+      <CTAButton label="Create My Site" variant="secondary" />
     </div>
 
     <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
@@ -22,4 +20,5 @@
 </template>
 
 <script setup>
+import CTAButton from "../../shared/CTAButton.vue";
 </script>

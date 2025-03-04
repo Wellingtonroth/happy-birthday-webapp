@@ -14,18 +14,16 @@
           Let's make a surprise!<br /> 
           Create your Birthday Page Now!
         </h2>
-        <p class="text-base md:text-lg text-gray-700 mt-3">
+        <p class="text-base md:text-lg text-gray-700 mt-3 mb-3">
           Set up a unique, lifetime birthday website in just a few minutes!<br />
           Get a personalized link and a QR code to share the joy instantly.
         </p>
-        <button class="mt-4 md:mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-bold w-full md:w-auto hover:bg-blue-600 transition-all">
-          Create Your Birthday Page
-        </button>
+        <CTAButton label="Create My Site" />
       </div>
     </div>
   </section>
 </template>
 
-
 <script setup>
+import CTAButton from "../../shared/CTAButton.vue";
 </script>

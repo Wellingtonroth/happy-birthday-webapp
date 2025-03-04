@@ -45,7 +45,7 @@
           </li>
         </ul>
         <button 
-          class="w-full py-3 rounded-lg font-bold transition"
+          class="w-full py-3 rounded-lg font-bold transition cursor-pointer"
           :class="plan.featured ? 'bg-yellow-400 text-gray-900 hover:bg-yellow-500' : 'bg-blue-600 text-white hover:bg-blue-700'"
         >
           {{ plan.buttonText }}
@@ -56,6 +56,8 @@
 </template>
 
 <script setup>
+import CTAButton from "../../shared/CTAButton.vue";
+
 const pricingOptions = [
   {
     title: "One-Time Purchase",
