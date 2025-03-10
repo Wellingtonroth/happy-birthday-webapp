@@ -13,7 +13,21 @@ export const useCheckoutStore = defineStore("checkout", {
         return response.data;
       } catch (error) {
         console.error("Error creating order:", error);
-        return null;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    async uploadImage(file) {
+      try {
+        this.isLoading = true;
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const response = await api.uploadImage(formData);
+        return response.data;
+      } catch (error) {
+        console.error("Error uploading image:", error);
       } finally {
         this.isLoading = false;
       }

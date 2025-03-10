@@ -33,7 +33,7 @@ const routes = [
       }
 
       const order = await getOrderById(orderId);
-      if (order && order?.data?.is_paid) {
+      if (order && order?.data?.status === "paid") {
         return next();
       }
       return next("/checkout/pending");
