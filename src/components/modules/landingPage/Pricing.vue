@@ -81,7 +81,7 @@ const pricingOptions = [
       "Lifetime Access",
       "Choose between Themes",
       "Personalized Messages",
-      "Add Photos",
+      "Add up to 4 Photos",
       "QR Code Sharing",
     ],
     buttonText: "Get the Best Deal",
