@@ -122,9 +122,6 @@ const {
   isLoading,
 } = useCheckout();
 
-/**
- * Manipula o upload de imagens garantindo que o usuário possa enviar no máximo 4 imagens.
- */
 const handleImageUpload = (event) => {
   const files = Array.from(event.target.files);
 
@@ -138,17 +135,11 @@ const handleImageUpload = (event) => {
   imagePreviews.value = selectedImages.value.map((file) => URL.createObjectURL(file));
 };
 
-/**
- * Remove uma imagem da lista de uploads
- */
 const removeImage = (index) => {
   selectedImages.value.splice(index, 1);
   imagePreviews.value.splice(index, 1);
 };
 
-/**
- * Realiza o processo de checkout e upload de imagens
- */
 const handleCheckout = async () => {
   if (!selectedTheme.value) {
     alert("Please select a theme.");

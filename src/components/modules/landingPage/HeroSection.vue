@@ -5,7 +5,7 @@
         The Easiest Way to Create a <br> Stunning Birthday Website!
       </h1>
       <p class="text-lg text-[#555] my-6">
-        Surprise your loved ones with a <span class="font-bold">personalized</span> birthday page, featuring heartfelt messages, custom themes, and easy sharing.  
+        Surprise your loved ones with a <span class="font-bold">personalized</span> birthday page, featuring heartfelt messages, photos, custom themes, and easy sharing.  
         <span class="text-blue-500 font-semibold">No coding required!</span>
       </p> 
       <CTAButton label="Create My Site" variant="secondary" />
