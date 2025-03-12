@@ -18,16 +18,17 @@ export const useCheckoutStore = defineStore("checkout", {
       }
     },
 
-    async uploadImage(file) {
+    async uploadImages(orderId, files) {
       try {
         this.isLoading = true;
         const formData = new FormData();
-        formData.append("image", file);
+        formData.append("orderId", orderId);
+        files.forEach((file) => formData.append("images", file));
 
-        const response = await api.uploadImage(formData);
+        const response = await api.uploadImages(formData);
         return response.data;
       } catch (error) {
-        console.error("Error uploading image:", error);
+        console.error("Error uploading images:", error);
       } finally {
         this.isLoading = false;
       }

@@ -6,11 +6,9 @@ export default {
     return api.post(baseUrl.checkout, payload);
   },
 
-  uploadImage(payload) {
-    return api.post(baseUrl.uploadImage, payload, {
-      headers: { 
-        "Content-Type": "multipart/form-data"
-      },
+  uploadImages(payload) {
+    return api.post(baseUrl.uploadImages, payload, {
+      headers: { "Content-Type": "multipart/form-data" },
     });
   },
 };

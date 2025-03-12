@@ -51,8 +51,7 @@
       <div>
         <label class="block text-gray-700 font-medium">
           Personalized Message (Optional)
-          </label
-        >
+        </label>
         <textarea
           placeholder="Write a special message"
           class="input h-24"
@@ -93,22 +92,25 @@
         </div>
       </div>
 
-      <div>
+      <div v-if="selectedPlan === 'premium'">
         <label class="block text-gray-700 font-medium">
-          Upload an Image (Optional)
+          Upload Images (Optional)
         </label>
-        <input
-          type="file"
-          class="input-file"
-          accept="image/*"
+        <input 
+          type="file" 
+          class="input-file" 
+          accept="image/*" 
+          multiple 
           @change="handleImageUpload"
         />
-
-        <img
-          class="mt-2 rounded-lg w-full h-32 object-cover"
-          v-if="imagePreview"
-          :src="imagePreview"
-        />
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          <img 
+            class="rounded-lg w-full h-24 object-cover"
+            v-for="image in imagePreviews" 
+            :key="image" 
+            :src="image" 
+          />
+        </div>
       </div>
 
       <button
@@ -131,9 +133,8 @@ const email = ref("");
 const message = ref("");
 const selectedTheme = ref("");
 const selectedPlan = ref("");
-const selectedImage = ref(null);
-const imagePreview = ref("");
-const uploadedImageUrl = ref("");
+const selectedImages = ref([]);
+const imagePreviews = ref([]);
 
 const themes = ref([
   { value: "dogs", label: "Dogs" },
@@ -143,16 +144,13 @@ const themes = ref([
 
 const { 
   createOrder, 
-  uploadImage,
+  uploadImages, 
   isLoading,
 } = useCheckout();
 
 const handleImageUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    selectedImage.value = file;
-    imagePreview.value = URL.createObjectURL(file);
-  }
+  selectedImages.value = Array.from(event.target.files);
+  imagePreviews.value = selectedImages.value.map((file) => URL.createObjectURL(file));
 };
 
 const handleCheckout = async () => {
@@ -166,19 +164,6 @@ const handleCheckout = async () => {
     return;
   }
 
-  let imageUrl = "";
-
-  if (selectedImage.value) {
-    try {
-      const result = await uploadImage(selectedImage.value);
-      imageUrl = result?.imageUrl || "";
-      uploadedImageUrl.value = imageUrl;
-    } catch (error) {
-      alert("Image upload failed.");
-      return;
-    }
-  }
-
   const payload = {
     name: name.value,
     age: age.value,
@@ -186,16 +171,21 @@ const handleCheckout = async () => {
     message: message.value,
     theme: selectedTheme.value,
     plan: selectedPlan.value,
-    imageUrl,
   };
 
   try {
     const response = await createOrder(payload);
-    if (response?.url) {
-      window.location.href = response.url;
-    } else {
-      alert("Order created successfully!");
+    if (!response?.orderId) {
+      alert("Failed to create order.");
+      return;
     }
+
+    const orderId = response.orderId;
+    if (selectedImages.value.length > 0) {
+      await uploadImages(orderId, selectedImages.value);
+    }
+
+    alert("Order created successfully!");
   } catch (error) {
     console.error("Order creation failed:", error);
     alert("Something went wrong. Please try again.");
