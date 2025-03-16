@@ -6,9 +6,9 @@
     <p class="text-lg text-gray-600 mb-8">
       Simple & Affordable – One-time fee, no hidden costs.
     </p>
-    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-8">
       <div 
-        class="relative p-8 rounded-3xl shadow-lg border text-center"
+        class="relative p-8 rounded-3xl shadow-lg border text-center w-full max-w-sm"
         v-for="(plan, index) in pricingOptions" 
         :key="index" 
         :class="plan.featured ? 'bg-blue-600 text-white scale-105 shadow-2xl border-blue-700' : 'bg-white text-gray-900 border-gray-300'"
