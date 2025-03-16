@@ -1,9 +1,9 @@
 <template>
-  <nav class="absolute top-0 left-0 w-full flex justify-between items-center py-4 px-6 lg:px-12 bg-transparent">
-    <div class="text-2xl font-bold text-[#2D3436]">
+  <nav class="fixed top-0 left-0 w-full flex justify-between items-center py-3 px-4 lg:px-10 bg-white shadow-md z-50">
+    <router-link to="/" class="text-lg md:text-2xl font-semibold text-[#2D3436]">
       🎉 HappyBirthday
-    </div>
-    <CTAButton label="Create My Site" variant="secondary" />
+    </router-link>
+    <CTAButton label="Create My Site" variant="secondary" class="text-sm px-4 py-2 md:px-6 md:py-3 md:text-lg" />
   </nav>
 </template>
 
