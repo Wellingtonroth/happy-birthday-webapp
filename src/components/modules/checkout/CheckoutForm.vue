@@ -29,24 +29,31 @@
       </div>
 
       <div>
-        <label class="block text-gray-700 font-medium">Select a Plan</label>
+        <label class="block text-gray-700 font-medium">
+          Select a Plan
+        </label>
         <select class="input" required v-model="selectedPlan">
+          <option value="" disabled selected>Select a Plan</option>
           <option value="basic">Basic - $4.89</option>
           <option value="premium">Premium - $6.89</option>
         </select>
       </div>
 
       <div>
-        <label class="block text-gray-700 font-medium">Select a Theme</label>
+        <label class="block text-gray-700 font-medium">
+          Select a Theme
+        </label>
         <div class="grid grid-cols-3 gap-4 mt-2">
           <div
-            class="theme-option"
+            class="theme-option p-4 text-center rounded-lg border-2 cursor-pointer transition-all"
             v-for="theme in themes"
             :key="theme.value"
-            :class="{ 'border-green-500': selectedTheme === theme.value }"
-            @click="selectedTheme = theme.value"
+            :class="{ 'border-green-500 border-4': selectedTheme === theme.value, 'border-gray-300': selectedTheme !== theme.value }"
+            @click.prevent="selectTheme(theme.value)"
           >
-            <p class="text-center text-sm mt-1">{{ theme.label }}</p>
+            <p class="text-sm font-semibold">
+              {{ theme.label }}
+            </p>
           </div>
         </div>
       </div>
@@ -71,7 +78,9 @@
             @change="handleImageUpload"
           />
         </div>
-        <p class="text-red-500 text-sm mt-1" v-if="imageError">{{ imageError }}</p>
+        <p class="text-red-500 text-sm mt-1" v-if="imageError">
+          {{ imageError }}
+        </p>
 
         <div class="grid grid-cols-4 gap-2 mt-2">
           <div v-for="(image, index) in imagePreviews" :key="index" class="relative">
@@ -104,7 +113,7 @@ const name = ref("");
 const age = ref("");
 const email = ref("");
 const message = ref("");
-const selectedTheme = ref("");
+const selectedTheme = ref(""); 
 const selectedPlan = ref("");
 const selectedImages = ref([]);
 const imagePreviews = ref([]);
@@ -116,11 +125,11 @@ const themes = ref([
   { value: "beach", label: "Beach" },
 ]);
 
-const { 
-  createOrder, 
-  uploadImages, 
-  isLoading,
-} = useCheckout();
+const { createOrder, uploadImages } = useCheckout();
+
+const selectTheme = (theme) => {
+  selectedTheme.value = theme;
+};
 
 const handleImageUpload = (event) => {
   const files = Array.from(event.target.files);
@@ -180,7 +189,6 @@ const handleCheckout = async () => {
 };
 </script>
 
-
 <style scoped>
 .input {
   display: block;
@@ -192,29 +200,19 @@ const handleCheckout = async () => {
   outline: none;
 }
 
-.input-file {
-  width: 100%;
-  padding: 6px;
-  border: 1px solid green;
-}
-
 .theme-option {
-  cursor: pointer;
-  border: 2px solid transparent;
-  padding: 4px;
-  border-radius: 8px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .theme-option:hover {
-  border-color: #4caf50;
+  transform: scale(1.05);
 }
 
 .custom-file-upload {
   display: inline-block;
   padding: 8px 12px;
   cursor: pointer;
-  background-color: #f3f4f6; /* Cinza claro */
+  background-color: #f3f4f6;
   border: 1px solid #ccc;
   border-radius: 6px;
   text-align: center;
@@ -224,11 +222,10 @@ const handleCheckout = async () => {
 }
 
 .custom-file-upload:hover {
-  background-color: #e5e7eb; /* Cinza mais escuro */
+  background-color: #e5e7eb;
 }
 
 .hidden-input {
   display: none;
 }
-
 </style>
