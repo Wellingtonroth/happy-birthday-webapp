@@ -4,6 +4,7 @@ const serverUrl = 'http://localhost:5000'; // This should match your backend ser
 const base = {
   checkout: `${serverUrl}/api/checkout`,
   getOrderById: `${serverUrl}/api/order/:id`,
+  getTemplateImages: `${serverUrl}/api/template/images`,
   uploadImages: `${serverUrl}/api/upload-images`,
 };
 
