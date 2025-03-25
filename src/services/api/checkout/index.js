@@ -11,4 +11,8 @@ export default {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },
+
+  getTemplateImages() {
+    return api.get(baseUrl.getTemplateImages);
+  },
 };
