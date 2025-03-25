@@ -4,6 +4,9 @@ import api from "../services/api/checkout";
 export const useCheckoutStore = defineStore("checkout", {
   state: () => ({
     isLoading: false,
+    order: {},
+    selectedTemplate: null,
+    templates: [],
   }),
   actions: {
     async createOrder(payload) {
@@ -32,6 +35,27 @@ export const useCheckoutStore = defineStore("checkout", {
       } finally {
         this.isLoading = false;
       }
+    },
+
+    async getTemplateImages() {
+      try {
+        this.isLoading = true;
+        const response = await api.getTemplateImages();
+        this.templates = response.data;
+        return response.data;
+      } catch (error) {
+        console.error("Error getting template images:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    setSelectedTemplate(template) {
+      this.selectedTemplate = template;
+    },
+
+    setOrder(payload) {
+      this.order = payload;
     },
   },
 });
