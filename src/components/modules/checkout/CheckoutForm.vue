@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-xl">
+  <div class="p-8 bg-white shadow-lg rounded-xl">
     <h2 class="text-3xl font-bold mb-6 text-center">
       Complete Your Purchase
     </h2>
@@ -7,7 +7,6 @@
       class="space-y-6"
       @submit.prevent="handleCheckout" 
     >
-      <!-- Recipient Details -->
       <div>
         <label class="block text-gray-700 font-medium">Recipient Name</label>
         <input type="text" placeholder="John Doe" class="input" required v-model="name" />
@@ -39,26 +38,6 @@
         </select>
       </div>
 
-      <div>
-        <label class="block text-gray-700 font-medium">
-          Select a Theme
-        </label>
-        <div class="grid grid-cols-3 gap-4 mt-2">
-          <div
-            class="theme-option p-4 text-center rounded-lg border-2 cursor-pointer transition-all"
-            v-for="theme in themes"
-            :key="theme.value"
-            :class="{ 'border-green-500 border-4': selectedTheme === theme.value, 'border-gray-300': selectedTheme !== theme.value }"
-            @click.prevent="selectTheme(theme.value)"
-          >
-            <p class="text-sm font-semibold">
-              {{ theme.label }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Upload de Imagens (Apenas Premium) -->
       <div v-if="selectedPlan === 'premium'">
         <div>
           <label class="block text-gray-700 font-medium">
@@ -95,6 +74,25 @@
         </div>
       </div>
 
+      <div>
+        <label class="block text-gray-700 font-medium">
+          Select a Theme
+        </label>
+        <div class="grid grid-cols-3 gap-4 mt-2">
+          <div
+            class="theme-option p-4 text-center rounded-lg border-2 cursor-pointer transition-all"
+            v-for="(theme, index) in templates"
+            :key="index"
+            :class="{ 'border-green-500 border-4': selectedTheme === theme, 'border-gray-300': selectedTheme !== theme }"
+            @click.prevent="selectTheme(theme)"
+          >
+            <p class="text-sm font-semibold">
+              {{ theme.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <button
         type="submit"
         class="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium text-lg"
@@ -106,7 +104,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onBeforeMount, ref, watch } from "vue";
 import useCheckout from "../../../composables/useCheckout";
 
 const name = ref("");
@@ -119,16 +117,19 @@ const selectedImages = ref([]);
 const imagePreviews = ref([]);
 const imageError = ref("");
 
-const themes = ref([
-  { value: "dogs", label: "Dogs" },
-  { value: "cats", label: "Cats" },
-  { value: "beach", label: "Beach" },
-]);
-
-const { createOrder, uploadImages } = useCheckout();
+const { 
+  createOrder, 
+  uploadImages,
+  getTemplateImages,
+  setSelectedTemplate,
+  setOrder,
+  templates,
+  order,
+} = useCheckout();
 
 const selectTheme = (theme) => {
   selectedTheme.value = theme;
+  setSelectedTemplate(theme);
 };
 
 const handleImageUpload = (event) => {
@@ -187,6 +188,21 @@ const handleCheckout = async () => {
     alert("Something went wrong. Please try again.");
   }
 };
+
+watch([name, age, email, message, selectedTheme, selectedPlan], () => {
+  setOrder({
+    name: name.value,
+    age: age.value,
+    email: email.value,
+    message: message.value,
+    theme: selectedTheme.value,
+    plan: selectedPlan.value,
+  });
+});
+
+onBeforeMount(async () => {
+  await getTemplateImages();
+});
 </script>
 
 <style scoped>
