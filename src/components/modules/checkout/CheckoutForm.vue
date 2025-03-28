@@ -75,20 +75,29 @@
       </div>
 
       <div>
-        <label class="block text-gray-700 font-medium">
+        <label class="block text-gray-700 font-medium mb-2">
           Select a Theme
         </label>
-        <div class="grid grid-cols-3 gap-4 mt-2">
-          <div
-            class="theme-option p-4 text-center rounded-lg border-2 cursor-pointer transition-all"
-            v-for="(theme, index) in templates"
-            :key="index"
-            :class="{ 'border-green-500 border-4': selectedTheme === theme, 'border-gray-300': selectedTheme !== theme }"
-            @click.prevent="selectTheme(theme)"
-          >
-            <p class="text-sm font-semibold">
-              {{ theme.name }}
-            </p>
+        
+        <div class="h-[500px] overflow-y-auto rounded-lg border border-gray-200 p-2">
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div
+              class="theme-option p-2 text-center rounded-lg border-2 cursor-pointer transition-all hover:shadow-md"
+              v-for="(theme, index) in templates"
+              :key="index"
+              :class="{
+                'border-green-500 border-4': selectedTheme === theme,
+                'border-gray-300': selectedTheme !== theme
+              }"
+              @click.prevent="selectTheme(theme)"
+            >
+              <img
+                :src="theme.url"
+                :alt="theme.name"
+                class="w-full h-24 object-cover rounded mb-2"
+              />
+              <p class="text-xs truncate font-medium">{{ theme.name }}</p>
+            </div>
           </div>
         </div>
       </div>
