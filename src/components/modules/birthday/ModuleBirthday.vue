@@ -1,11 +1,12 @@
 <template>
-  <div class="max-w-lg mx-auto p-8">
-    happybirthdayyy
+  <div class="">
+    <Theme />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import Theme from "./Theme.vue";
 import useBirthday from "../../../composables/useBirthday";
 
 const { getOrderById } = useBirthday();
