@@ -99,7 +99,7 @@
             :key="index"
             class="relative"
           >
-            <img class="rounded-lg w-full h-24 object-cover" :src="image" />
+            <img class="rounded-lg w-full max-w-[160px] h-24 object-cover" :src="image" />
             <button
               class="absolute top-1 right-1 bg-red-500 text-white rounded-full px-2 text-xs"
               @click.prevent="removeImage(index)"
@@ -160,6 +160,7 @@ const selectedPlan = ref("");
 const selectedImages = ref([]);
 const imagePreviews = ref([]);
 const imageError = ref("");
+const nameMaxLength = 50;
 
 const {
   createOrder,
@@ -168,7 +169,6 @@ const {
   setSelectedTemplate,
   setOrder,
   templates,
-  order,
 } = useCheckout();
 
 const selectTheme = (theme) => {
@@ -196,7 +196,6 @@ const removeImage = (index) => {
   imagePreviews.value.splice(index, 1);
 };
 
-const nameMaxLength = 50;
 const isNameAtMaxLength = computed(() => name.value.length >= nameMaxLength);
 
 const isEmailInvalid = computed(() => {
@@ -250,7 +249,7 @@ const handleCheckout = async () => {
 };
 
 
-watch([name, age, email, message, selectedTheme, selectedPlan], () => {
+watch([name, age, email, message, selectedTheme, selectedPlan, imagePreviews], () => {
   setOrder({
     name: name.value,
     age: age.value,
@@ -258,6 +257,7 @@ watch([name, age, email, message, selectedTheme, selectedPlan], () => {
     message: message.value,
     theme: selectedTheme.value,
     plan: selectedPlan.value,
+    images: imagePreviews.value,
   });
 });
 

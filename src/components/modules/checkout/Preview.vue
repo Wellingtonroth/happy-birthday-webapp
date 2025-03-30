@@ -9,18 +9,47 @@
         :style="{ backgroundImage: `url(${order?.theme?.url})` }"
       >
         <div
-          v-if="order?.message || order?.name"
+          v-if="currentContent"
           class="p-4 rounded-lg max-w-[90%] break-words text-pretty bg-white/50 backdrop-blur-sm shadow-md mx-8 mt-5"
         >
-          <p 
-            v-if="order?.name"
-            class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize"
-          >
-            Dear {{ order.name }}!
-          </p>
-        <div class="mt-2 italic text-sm text-center break-words max-h-32 overflow-y-auto px-1 custom-scroll">
-            {{ order.message }}
+          <div v-if="currentContent === 'message'">
+            <p
+              v-if="order?.name"
+              class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize"
+            >
+              Dear {{ order.name }}!
+            </p>
+            <div
+              v-if="order?.message"
+              class="mt-2 italic text-sm text-center break-words max-h-32 overflow-y-auto px-1 custom-scroll"
+            >
+              {{ order.message }}
+            </div>
           </div>
+
+          <div
+            v-else-if="currentContent.type === 'image'"
+            class="w-full flex flex-col items-center"
+          >
+            <img
+              :src="currentContent.url"
+              class="rounded-lg max-w-[160px] max-h-[160px] mx-auto"
+            />
+            <p
+              v-if="order?.name"
+              class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize mt-2"
+            >
+              Dear {{ order.name }}!
+            </p>
+          </div>
+
+          <button
+            v-if="slides.length > 1"
+            @click="nextSlide"
+            class="mt-4 mx-auto block text-green-600 text-sm hover:underline"
+          >
+            ➡️ Next
+          </button>
         </div>
       </div>
 
@@ -70,9 +99,7 @@
           d="M12 8c1.657 0 3-.895 3-2s-1.343-2-3-2-3 .895-3 2 1.343 2 3 2zm0 2c-2.21 0-4 1.79-4 4v2h8v-2c0-2.21-1.79-4-4-4z"
         />
       </svg>
-      <p class="text-gray-600 text-base font-medium">
-        No theme selected yet
-      </p>
+      <p class="text-gray-600 text-base font-medium">No theme selected yet</p>
       <p class="text-gray-500 text-sm mt-1">
         Choose a birthday template to preview it here 🎉
       </p>
@@ -81,36 +108,72 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from "vue";
 import useCheckout from "../../../composables/useCheckout";
 
 const loading = ref(false);
+const currentSlide = ref(0);
+
 const { order } = useCheckout();
 
 const isTemplateInLocalStorage = (url) => {
-  const shownTemplates = JSON.parse(localStorage.getItem('shownTemplates')) || [];
+  const shownTemplates =
+    JSON.parse(localStorage.getItem("shownTemplates")) || [];
   return shownTemplates.includes(url);
 };
 
 const addTemplateToLocalStorage = (url) => {
-  const shownTemplates = JSON.parse(localStorage.getItem('shownTemplates')) || [];
+  const shownTemplates =
+    JSON.parse(localStorage.getItem("shownTemplates")) || [];
   if (!shownTemplates.includes(url)) {
     shownTemplates.push(url);
-    localStorage.setItem('shownTemplates', JSON.stringify(shownTemplates));
+    localStorage.setItem("shownTemplates", JSON.stringify(shownTemplates));
   }
 };
 
-watch(() => order.theme, (newTheme) => {
-  if (newTheme?.url && !isTemplateInLocalStorage(newTheme.url)) {
-    loading.value = true;
-    setTimeout(() => {
-      loading.value = false;
-      addTemplateToLocalStorage(newTheme.url);
-    }, 2000);
-  } else {
-    loading.value = false;
+const slides = computed(() => {
+  const items = [];
+
+  if (order.value?.message || order.value?.name) {
+    items.push("message");
   }
+
+  if (order.value?.plan === "premium" && order.value?.images?.length > 0) {
+    order.value.images.forEach((imageUrl, index) => {
+      items.push({ type: "image", url: imageUrl, index });
+    });
+  }
+
+  return items;
 });
+
+const currentContent = computed(() => slides.value[currentSlide.value]);
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % slides.value.length;
+};
+
+watch(
+  () => order.value,
+  () => {
+    currentSlide.value = 0;
+  }
+);
+
+watch(
+  () => order.theme,
+  (newTheme) => {
+    if (newTheme?.url && !isTemplateInLocalStorage(newTheme.url)) {
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+        addTemplateToLocalStorage(newTheme.url);
+      }, 2000);
+    } else {
+      loading.value = false;
+    }
+  }
+);
 </script>
 
 <style scoped>
