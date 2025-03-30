@@ -94,8 +94,8 @@
               <img
                 :src="theme.url"
                 :alt="theme.name"
-                class="w-full h-24 object-cover rounded mb-2"
-              />
+                class="w-full h-24 object-contain lg:object-cover rounded mb-2"
+                />
               <p class="text-xs truncate font-medium">{{ theme.name }}</p>
             </div>
           </div>

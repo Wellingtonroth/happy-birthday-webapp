@@ -8,15 +8,18 @@
         class="relative w-full max-w-[360px] h-[450px] rounded-md bg-no-repeat bg-contain bg-center flex items-center justify-center text-center text-black mx-auto"
         :style="{ backgroundImage: `url(${order?.theme?.url})` }"
       >
-        <div class="p-4 rounded-lg w-full max-w-[90%] break-words text-pretty bg-white/50 backdrop-blur-sm shadow-md">
+        <div
+          v-if="order?.message || order?.name"
+          class="p-4 rounded-lg max-w-[90%] break-words text-pretty bg-white/50 backdrop-blur-sm shadow-md mx-8"
+        >
           <p 
             v-if="order?.name"
             class="text-lg font-semibold break-words text-center"
           >
             To: {{ order?.name }}
-          </p>
+          </  p>
           <div
-            v-if="order?.message"
+            
             class="mt-2 italic text-sm text-center break-words max-h-32 overflow-y-auto px-1 custom-scroll"
           >
             {{ order.message }}
