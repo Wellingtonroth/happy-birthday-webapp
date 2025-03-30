@@ -3,34 +3,66 @@
     <h2 class="text-3xl font-bold mb-6 text-center">
       Complete Your Purchase
     </h2>
-    <form 
-      class="space-y-6"
-      @submit.prevent="handleCheckout" 
-    >
+    <form class="space-y-6" @submit.prevent="handleCheckout">
       <div>
-        <label class="block text-gray-700 font-medium">Recipient Name</label>
-        <input type="text" placeholder="John Doe" class="input" required v-model="name" />
-      </div>
+        <label class="block text-gray-700 font-medium">
+          Recipient Name</label>
+        <input
+          type="text"
+          placeholder="John Doe"
+          class="input"
+          maxlength="50"
+          required
+          v-model="name"
+        />
+        <p v-if="isNameAtMaxLength" class="text-sm text-red-500 mt-1">
+          You've reached the 50-character limit.
+        </p>
+      </div>      
 
       <div>
-        <label class="block text-gray-700 font-medium">Recipient Age</label>
-        <input v-model="age" type="number" min="1" placeholder="Enter age" class="input" required />
-      </div>
-
-      <div>
-        <label class="block text-gray-700 font-medium">Your Email</label>
-        <input v-model="email" type="email" placeholder="email@example.com" class="input" required />
-      </div>
-
-      <div>
-        <label class="block text-gray-700 font-medium">Personalized Message (Optional)</label>
-        <textarea placeholder="Write a special message" class="input h-24" v-model="message" />
+        <label class="block text-gray-700 font-medium">
+          Recipient Age
+        </label>
+        <input
+          v-model="age"
+          type="number"
+          min="1"
+          placeholder="Enter age"
+          class="input"
+          required
+        />
       </div>
 
       <div>
         <label class="block text-gray-700 font-medium">
-          Select a Plan
+          Your Email
         </label>
+        <input
+          v-model="email"
+          type="email"
+          placeholder="email@example.com"
+          class="input"
+          required
+        />
+        <p v-if="isEmailInvalid" class="text-sm text-red-500 mt-1">
+          Please enter a valid email address.
+        </p>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium">
+          Personalized Message (Optional)
+        </label>
+        <textarea
+          placeholder="Write a special message"
+          class="input h-24"
+          v-model="message"
+        />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium"> Select a Plan </label>
         <select class="input" required v-model="selectedPlan">
           <option value="" disabled selected>Select a Plan</option>
           <option value="basic">Basic - $4.89</option>
@@ -43,17 +75,17 @@
           <label class="block text-gray-700 font-medium">
             Upload Images (Max: 4)
           </label>
-        
+
           <label for="file-upload" class="custom-file-upload">
             Choose up to 4 images
           </label>
-        
-          <input 
+
+          <input
             id="file-upload"
-            type="file" 
-            class="hidden-input" 
-            accept="image/*" 
-            multiple 
+            type="file"
+            class="hidden-input"
+            accept="image/*"
+            multiple
             @change="handleImageUpload"
           />
         </div>
@@ -62,9 +94,13 @@
         </p>
 
         <div class="grid grid-cols-4 gap-2 mt-2">
-          <div v-for="(image, index) in imagePreviews" :key="index" class="relative">
+          <div
+            v-for="(image, index) in imagePreviews"
+            :key="index"
+            class="relative"
+          >
             <img class="rounded-lg w-full h-24 object-cover" :src="image" />
-            <button 
+            <button
               class="absolute top-1 right-1 bg-red-500 text-white rounded-full px-2 text-xs"
               @click.prevent="removeImage(index)"
             >
@@ -78,7 +114,6 @@
         <label class="block text-gray-700 font-medium mb-2">
           Select a Theme
         </label>
-        
         <div class="h-[500px] overflow-y-auto rounded-lg border border-gray-200 p-2">
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             <div
@@ -87,7 +122,7 @@
               :key="index"
               :class="{
                 'border-green-500 border-4': selectedTheme === theme,
-                'border-gray-300': selectedTheme !== theme
+                'border-gray-300': selectedTheme !== theme,
               }"
               @click.prevent="selectTheme(theme)"
             >
@@ -95,7 +130,7 @@
                 :src="theme.url"
                 :alt="theme.name"
                 class="w-full h-24 object-contain lg:object-cover rounded mb-2"
-                />
+              />
               <p class="text-xs truncate font-medium">{{ theme.name }}</p>
             </div>
           </div>
@@ -113,21 +148,21 @@
 </template>
 
 <script setup>
-import { onBeforeMount, ref, watch } from "vue";
+import { onBeforeMount, ref, watch, computed } from "vue";
 import useCheckout from "../../../composables/useCheckout";
 
 const name = ref("");
 const age = ref("");
 const email = ref("");
 const message = ref("");
-const selectedTheme = ref(""); 
+const selectedTheme = ref("");
 const selectedPlan = ref("");
 const selectedImages = ref([]);
 const imagePreviews = ref([]);
 const imageError = ref("");
 
-const { 
-  createOrder, 
+const {
+  createOrder,
   uploadImages,
   getTemplateImages,
   setSelectedTemplate,
@@ -151,13 +186,24 @@ const handleImageUpload = (event) => {
 
   imageError.value = "";
   selectedImages.value = [...selectedImages.value, ...files].slice(0, 4);
-  imagePreviews.value = selectedImages.value.map((file) => URL.createObjectURL(file));
+  imagePreviews.value = selectedImages.value.map((file) =>
+    URL.createObjectURL(file)
+  );
 };
 
 const removeImage = (index) => {
   selectedImages.value.splice(index, 1);
   imagePreviews.value.splice(index, 1);
 };
+
+const nameMaxLength = 50;
+const isNameAtMaxLength = computed(() => name.value.length >= nameMaxLength);
+
+const isEmailInvalid = computed(() => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return email.value && !emailPattern.test(email.value);
+});
+
 
 const handleCheckout = async () => {
   if (!selectedTheme.value) {
@@ -167,6 +213,11 @@ const handleCheckout = async () => {
 
   if (!selectedPlan.value) {
     alert("Please select a plan.");
+    return;
+  }
+
+  if (isEmailInvalid.value) {
+    alert("Please enter a valid email address.");
     return;
   }
 
@@ -197,6 +248,7 @@ const handleCheckout = async () => {
     alert("Something went wrong. Please try again.");
   }
 };
+
 
 watch([name, age, email, message, selectedTheme, selectedPlan], () => {
   setOrder({

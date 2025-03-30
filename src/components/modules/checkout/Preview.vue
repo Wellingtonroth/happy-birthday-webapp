@@ -10,18 +10,15 @@
       >
         <div
           v-if="order?.message || order?.name"
-          class="p-4 rounded-lg max-w-[90%] break-words text-pretty bg-white/50 backdrop-blur-sm shadow-md mx-8"
+          class="p-4 rounded-lg max-w-[90%] break-words text-pretty bg-white/50 backdrop-blur-sm shadow-md mx-8 mt-5"
         >
           <p 
             v-if="order?.name"
-            class="text-lg font-semibold break-words text-center"
+            class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize"
           >
-            To: {{ order?.name }}
-          </  p>
-          <div
-            
-            class="mt-2 italic text-sm text-center break-words max-h-32 overflow-y-auto px-1 custom-scroll"
-          >
+            Dear {{ order.name }}!
+          </p>
+        <div class="mt-2 italic text-sm text-center break-words max-h-32 overflow-y-auto px-1 custom-scroll">
             {{ order.message }}
           </div>
         </div>
