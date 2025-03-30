@@ -32,9 +32,6 @@ import Footer from '../../shared/Footer.vue';
 }
 
 .preview {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-25%);
   max-width: 360px;
   width: 100%;
   background-color: white;
@@ -43,10 +40,6 @@ import Footer from '../../shared/Footer.vue';
 }
 
 @media (max-width: 768px) {
-  .form {
-    width: 100%;
-  }
-  
   .wrapper {
     flex-direction: column;
     align-items: center;
@@ -58,7 +51,19 @@ import Footer from '../../shared/Footer.vue';
     margin-top: 2rem;
     max-width: 100%;
   }
+
+  .form {
+    width: 100%;
+  }
 }
+
+@media (min-width: 1024px) {
+  .preview {
+    position: sticky;
+    top: 100px;
+  }
+}
+
 
 @media (max-width: 1024px) and (min-width: 769px) {
   .form {
