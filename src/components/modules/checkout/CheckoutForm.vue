@@ -1,12 +1,13 @@
 <template>
   <div class="p-8 bg-white shadow-lg rounded-xl">
     <h2 class="text-3xl font-bold mb-6 text-center">
-      Complete Your Purchase
+      {{ $t('module.checkout.form.title') }}
     </h2>
     <form class="space-y-6" @submit.prevent="handleCheckout">
       <div>
         <label class="block text-gray-700 font-medium">
-          Recipient Name</label>
+          {{ $t('module.checkout.form.name') }}
+        </label>
         <input
           type="text"
           placeholder="John Doe"
@@ -16,13 +17,13 @@
           v-model="name"
         />
         <p v-if="isNameAtMaxLength" class="text-sm text-red-500 mt-1">
-          You've reached the 50-character limit.
+          {{ $t('module.checkout.form.name.characters.limit') }}
         </p>
       </div>      
 
       <div>
         <label class="block text-gray-700 font-medium">
-          Recipient Age
+          {{ $t('module.checkout.form.age') }}
         </label>
         <input
           v-model="age"
@@ -36,7 +37,7 @@
 
       <div>
         <label class="block text-gray-700 font-medium">
-          Your Email
+          {{ $t('module.checkout.form.email') }}
         </label>
         <input
           v-model="email"
@@ -46,13 +47,13 @@
           required
         />
         <p v-if="isEmailInvalid" class="text-sm text-red-500 mt-1">
-          Please enter a valid email address.
+          {{ $t('module.checkout.form.valid.email') }}
         </p>
       </div>
 
       <div>
         <label class="block text-gray-700 font-medium">
-          Personalized Message (Optional)
+          {{ $t('module.checkout.form.message') }}
         </label>
         <textarea
           placeholder="Write a special message"
@@ -62,24 +63,26 @@
       </div>
 
       <div>
-        <label class="block text-gray-700 font-medium"> Select a Plan </label>
+        <label class="block text-gray-700 font-medium">
+          {{ $t('module.checkout.form.select.plan') }}
+        </label>
         <select class="input" required v-model="selectedPlan">
-          <option value="" disabled selected>Select a Plan</option>
-          <option value="basic">Basic - $4.89</option>
-          <option value="premium">Premium - $6.89</option>
+          <option value="" disabled selected>
+            {{ $t('module.checkout.form.select.plan') }}
+          </option>
+          <option value="basic">{{ $t('module.checkout.form.select.plan.basic') }} - $4.89</option>
+          <option value="premium">{{ $t('module.checkout.form.select.plan.premium') }} - $6.89</option>
         </select>
       </div>
 
       <div v-if="selectedPlan === 'premium'">
         <div>
           <label class="block text-gray-700 font-medium">
-            Upload Images (Max: 4)
+            {{ $t('module.checkout.form.upload.image') }}
           </label>
-
           <label for="file-upload" class="custom-file-upload">
-            Choose up to 4 images
+            {{ $t('module.checkout.form.choose.image') }}
           </label>
-
           <input
             id="file-upload"
             type="file"
@@ -112,7 +115,7 @@
 
       <div>
         <label class="block text-gray-700 font-medium mb-2">
-          Select a Theme
+          {{ $t('module.checkout.form.select.theme') }}
         </label>
         <div class="h-[500px] overflow-y-auto rounded-lg border border-gray-200 p-2">
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -141,7 +144,7 @@
         type="submit"
         class="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium text-lg"
       >
-        Checkout
+        {{ $t('module.checkout.form.checkout.button') }}
       </button>
     </form>
   </div>

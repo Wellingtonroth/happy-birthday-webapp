@@ -1,3 +1,16 @@
 {
-  "teste.message": "Olá, mundo!"
+  "module.checkout.form.title": "Conclua sua compra",
+  "module.checkout.form.name": "Nome do destinatário",
+  "module.checkout.form.name.characters.limit": "Você atingiu o limite de 50 caracteres.",
+  "module.checkout.form.age": "Idade do destinatário",
+  "module.checkout.form.email": "Seu e-mail",
+  "module.checkout.form.valid.email": "Por favor, insira um endereço de e-mail válido.",
+  "module.checkout.form.message": "Mensagem personalizada (opcional)",
+  "module.checkout.form.select.plan": "Selecione um plano",
+  "module.checkout.form.select.plan.basic": "Básico",
+  "module.checkout.form.select.plan.premium": "Premium",
+  "module.checkout.form.upload.image": "Enviar imagens (Máx: 4)",
+  "module.checkout.form.choose.image": "Escolha até 4 imagens",
+  "module.checkout.form.select.theme": "Selecione um tema",
+  "module.checkout.form.checkout.button": "Finalizar compra"
 }
