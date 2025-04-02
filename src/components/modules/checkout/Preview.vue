@@ -1,7 +1,9 @@
 <template>
   <div class="p-4 bg-white rounded-xl shadow-md">
     <div v-if="order?.theme">
-      <span class="block font-semibold mb-2">Preview</span>
+      <span class="block font-semibold mb-2">
+        {{ $t('module.checkout.preview.title') }}
+      </span>
 
       <div
         v-if="!loading"
@@ -17,7 +19,7 @@
               v-if="order?.name"
               class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize"
             >
-              Dear {{ order.name }}!
+              {{ $t('module.checkout.preview.dear') }} {{ order.name }}!
             </p>
             <div
               v-if="order?.message"
@@ -39,7 +41,7 @@
               v-if="order?.name"
               class="text-base font-semibold text-center text-black/90 px-2 py-1 capitalize mt-2"
             >
-              Dear {{ order.name }}!
+              {{ $t('module.checkout.preview.dear') }} {{ order.name }}!
             </p>
           </div>
 
@@ -77,7 +79,9 @@
             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
           ></path>
         </svg>
-        <p class="text-gray-600 text-sm">Loading your birthday template...</p>
+        <p class="text-gray-600 text-sm">
+          {{ $t('module.checkout.preview.loading.theme') }}
+        </p>
       </div>
     </div>
 
@@ -99,9 +103,11 @@
           d="M12 8c1.657 0 3-.895 3-2s-1.343-2-3-2-3 .895-3 2 1.343 2 3 2zm0 2c-2.21 0-4 1.79-4 4v2h8v-2c0-2.21-1.79-4-4-4z"
         />
       </svg>
-      <p class="text-gray-600 text-base font-medium">No theme selected yet</p>
+      <p class="text-gray-600 text-base font-medium">
+        {{ $t('module.checkout.preview.no.theme.selected') }}
+      </p>
       <p class="text-gray-500 text-sm mt-1">
-        Choose a birthday template to preview it here 🎉
+        {{ $t('module.checkout.preview.instructions') }}
       </p>
     </div>
   </div>

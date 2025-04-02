@@ -12,5 +12,10 @@
   "module.checkout.form.upload.image": "Upload Images (Max: 4)",
   "module.checkout.form.choose.image": "Choose up to 4 images",
   "module.checkout.form.select.theme": "Select a Theme",
-  "module.checkout.form.checkout.button": "Checkout"
+  "module.checkout.form.checkout.button": "Checkout",
+  "module.checkout.preview.title": "Preview",
+  "module.checkout.preview.dear": "Dear",
+  "module.checkout.preview.loading.theme": "Loading your birthday template...",
+  "module.checkout.preview.no.theme.selected": "No theme selected yet",
+  "module.checkout.preview.instructions": "Choose a birthday template to preview it here 🎉"
 }
