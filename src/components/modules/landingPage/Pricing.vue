@@ -57,10 +57,12 @@
 </template>
 
 <script setup>
+import Plan from '../../../constants/Plan.js';
+
 const pricingOptions = [
   {
     title: 'module.landingpage.pricing.basic.title',
-    price: "$4.99",
+    price: Plan.BASIC,
     oldPrice: null, 
     benefits: [
       'module.landingpage.pricing.benefit.noads',
@@ -74,7 +76,7 @@ const pricingOptions = [
   },
   {
     title: 'module.landingpage.pricing.premium.title',
-    price: "$6.89",
+    price: Plan.PREMIUM,
     oldPrice: "$11.99",
     benefits: [
       'module.landingpage.pricing.benefit.noads',
