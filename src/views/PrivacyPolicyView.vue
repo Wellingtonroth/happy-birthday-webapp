@@ -1,7 +1,7 @@
 <template>
   <Navigation />
 
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto px-4 py-8 mt-14">
     <h1 class="text-3xl font-bold mb-6">{{ $t('module.privacy.title') }}</h1>
     <p class="text-gray-700 mb-4">
       <strong>{{ $t('module.privacy.lastUpdated.label') }}</strong> {{ $t('module.privacy.lastUpdated.date') }}
