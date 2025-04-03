@@ -8,7 +8,7 @@
           rel="noopener noreferrer" 
           class="hover:text-gray-400"
         >
-          Privacy Policy
+          {{ $t('shared.component.footer.privacy') }}
         </a>
         <a 
           href="/terms-of-use" 
@@ -16,7 +16,13 @@
           rel="noopener noreferrer" 
           class="hover:text-gray-400"
         >
-          Terms of Service
+          {{ $t('shared.component.footer.terms') }}
+        </a>
+        <a 
+          href="#" 
+          class="hover:text-gray-400"
+        >
+          {{ $t('shared.component.footer.contact') }}
         </a>
       </div>
       <div class="flex justify-center space-x-4 mb-4">
@@ -24,8 +30,8 @@
           href="#" 
           class="text-xl hover:text-gray-400"
         >
-        🐦
-      </a>
+          🐦
+        </a>
         <a 
           href="#" 
           class="text-xl hover:text-gray-400"
@@ -34,7 +40,7 @@
         </a>
       </div>
       <p class="text-sm text-gray-400">
-        © {{ new Date().getFullYear() }} HappyBirthday. All rights reserved.
+        © {{ new Date().getFullYear() }} {{ $t('shared.component.footer.rights') }}
       </p>
     </div>
   </footer>
