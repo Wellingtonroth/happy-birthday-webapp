@@ -19,10 +19,30 @@
   "module.checkout.preview.no.theme.selected": "Nenhum tema selecionado",
   "module.checkout.preview.instructions": "Escolha um modelo para visualizar aqui 🎉",
 
-  "shared.component.footer.rights": "HappyBirthday. All rights reserved.",
+  "shared.component.footer.rights": "HappyBirthday. Todos os Direitos Reservados.",
   "shared.component.footer.terms": "Termos de Serviço",
   "shared.component.footer.privacy": "Política de Privacidade",
   "shared.component.footer.contact": "Fale Conosco",
   "shared.component.navigation.home": "🎉 HappyBirthday",
-  "shared.component.button.create": "Criar meu Site"
+  "shared.component.button.create": "Criar meu Site",
+
+  "module.landingpage.hero.title.line1": "Vamos fazer uma surpresa!",
+  "module.landingpage.hero.title.line2": "Crie sua página de aniversário agora!",
+  "module.landingpage.hero.description.line1": "Crie um site de aniversário exclusivo e vitalício em apenas alguns minutos!",
+  "module.landingpage.hero.description.line2": "Obtenha um link personalizado e um código QR para compartilhar a alegria instantaneamente.",
+  "module.landingpage.qrcode.alt": "QR Code",
+  "module.landingpage.pricing.title": "Preços",
+  "module.landingpage.pricing.subtitle": "Simples e acessível – Taxa única, sem custos ocultos.",
+  "module.landingpage.pricing.featured.label": "⭐ Mais Escolhidos",
+  "module.landingpage.pricing.basic.title": "Compra Básica",
+  "module.landingpage.pricing.premium.title": "Pacote de aniversário Premium",
+  "module.landingpage.pricing.benefit.noads": "Sem Anúncios",
+  "module.landingpage.pricing.benefit.oneyear": "Acesso de 1 ano",
+  "module.landingpage.pricing.benefit.lifetime": "Acesso Vitalício",
+  "module.landingpage.pricing.benefit.themes": "Escolha entre Temas",
+  "module.landingpage.pricing.benefit.messages": "Mensagens Personalizadas",
+  "module.landingpage.pricing.benefit.photos": "Adicione até 4 Fotos",
+  "module.landingpage.pricing.benefit.qr": "Compartilhamento de QR Code",
+  "module.landingpage.pricing.basic.button": "Comece Agora",
+  "module.landingpage.pricing.premium.button": "Obtenha a Melhor Oferta"
 }

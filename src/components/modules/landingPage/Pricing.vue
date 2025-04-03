@@ -1,10 +1,10 @@
 <template>
   <section class="py-12 px-6 text-center bg-gray-100">
     <h2 class="text-3xl font-bold mb-6">
-      Pricing
+      {{ $t('module.landingpage.pricing.title') }}
     </h2>
     <p class="text-lg text-gray-600 mb-8">
-      Simple & Affordable – One-time fee, no hidden costs.
+      {{ $t('module.landingpage.pricing.subtitle') }}
     </p>
     <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-8">
       <div 
@@ -17,10 +17,10 @@
           class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-sm font-bold px-4 py-1 rounded-full"
           v-if="plan.featured" 
         >
-          ⭐ Most Picked
+          {{ $t('module.landingpage.pricing.featured.label') }}
         </div>
         <h3 class="text-2xl font-semibold">
-          {{ plan.title }}
+          {{ $t(plan.title) }}
         </h3>
         <div class="flex items-center justify-center gap-2 my-4">
           <p 
@@ -41,7 +41,7 @@
             v-for="(benefit, i) in plan.benefits" 
             :key="i"
           >
-            ✅ {{ benefit }}
+            ✅ {{ $t(benefit) }}
           </li>
         </ul>
         <button 
@@ -49,7 +49,7 @@
           :class="plan.featured ? 'bg-yellow-400 text-gray-900 hover:bg-yellow-500' : 'bg-blue-600 text-white hover:bg-blue-700'"
           @click="redirectToCheckout"
         >
-          {{ plan.buttonText }}
+          {{ $t(plan.buttonText) }}
         </button>
       </div>
     </div>
@@ -59,32 +59,32 @@
 <script setup>
 const pricingOptions = [
   {
-    title: "Basic Purchase",
-    price: "$4.89",
+    title: 'module.landingpage.pricing.basic.title',
+    price: "$4.99",
     oldPrice: null, 
     benefits: [
-      "No Ads",
-      "1 year Access",
-      "Choose between Themes",
-      "Personalized Messages",
-      "QR Code Sharing",
+      'module.landingpage.pricing.benefit.noads',
+      'module.landingpage.pricing.benefit.oneyear',
+      'module.landingpage.pricing.benefit.themes',
+      'module.landingpage.pricing.benefit.messages',
+      'module.landingpage.pricing.benefit.qr',
     ],
-    buttonText: "Get Started Now",
+    buttonText: 'module.landingpage.pricing.basic.button',
     featured: false
   },
   {
-    title: "Premium Birthday Pack",
+    title: 'module.landingpage.pricing.premium.title',
     price: "$6.89",
     oldPrice: "$11.99",
     benefits: [
-      "No Ads",
-      "Lifetime Access",
-      "Choose between Themes",
-      "Personalized Messages",
-      "Add up to 4 Photos",
-      "QR Code Sharing",
+      'module.landingpage.pricing.benefit.noads',
+      'module.landingpage.pricing.benefit.lifetime',
+      'module.landingpage.pricing.benefit.themes',
+      'module.landingpage.pricing.benefit.messages',
+      'module.landingpage.pricing.benefit.photos',
+      'module.landingpage.pricing.benefit.qr',
     ],
-    buttonText: "Get the Best Deal",
+    buttonText: 'module.landingpage.pricing.premium.button',
     featured: true 
   }
 ];
@@ -93,3 +93,4 @@ const redirectToCheckout = () => {
   window.location.href = "/checkout";
 };
 </script>
+

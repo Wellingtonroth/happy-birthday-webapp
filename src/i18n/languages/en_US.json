@@ -24,5 +24,25 @@
   "shared.component.footer.privacy": "Privacy Policy",
   "shared.component.footer.contact": "Contact Us",
   "shared.component.navigation.home": "🎉 HappyBirthday",
-  "shared.component.button.create": "Create My Site"
+  "shared.component.button.create": "Create My Site",
+
+  "module.landingpage.hero.title.line1": "Let's make a surprise!",
+  "module.landingpage.hero.title.line2": "Create your Birthday Page Now!",
+  "module.landingpage.hero.description.line1": "Set up a unique, lifetime birthday website in just a few minutes!",
+  "module.landingpage.hero.description.line2": "Get a personalized link and a QR code to share the joy instantly.",
+  "module.landingpage.qrcode.alt": "QR Code",
+  "module.landingpage.pricing.title": "Pricing",
+  "module.landingpage.pricing.subtitle": "Simple & Affordable – One-time fee, no hidden costs.",
+  "module.landingpage.pricing.featured.label": "⭐ Most Picked",
+  "module.landingpage.pricing.basic.title": "Basic Purchase",
+  "module.landingpage.pricing.premium.title": "Premium Birthday Pack",
+  "module.landingpage.pricing.benefit.noads": "No Ads",
+  "module.landingpage.pricing.benefit.oneyear": "1 year Access",
+  "module.landingpage.pricing.benefit.lifetime": "Lifetime Access",
+  "module.landingpage.pricing.benefit.themes": "Choose between Themes",
+  "module.landingpage.pricing.benefit.messages": "Personalized Messages",
+  "module.landingpage.pricing.benefit.photos": "Add up to 4 Photos",
+  "module.landingpage.pricing.benefit.qr": "QR Code Sharing",
+  "module.landingpage.pricing.basic.button": "Get Started Now",
+  "module.landingpage.pricing.premium.button": "Get the Best Deal"
 }
