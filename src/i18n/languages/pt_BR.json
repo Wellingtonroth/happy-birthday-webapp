@@ -44,5 +44,16 @@
   "module.landingpage.pricing.benefit.photos": "Adicione até 4 Fotos",
   "module.landingpage.pricing.benefit.qr": "Compartilhamento de QR Code",
   "module.landingpage.pricing.basic.button": "Comece Agora",
-  "module.landingpage.pricing.premium.button": "Obtenha a Melhor Oferta"
+  "module.landingpage.pricing.premium.button": "Obtenha a Melhor Oferta",
+  "module.landingpage.howitworks.title": "Como Funciona",
+  "module.landingpage.howitworks.subtitle": "Siga estes passos simples para criar uma surpresa de aniversário inesquecível",
+  "module.landingpage.howitworks.step": "Etapa",
+  "module.landingpage.howitworks.step1.title": "Escolha um Tema",
+  "module.landingpage.howitworks.step1.description": "Selecione entre diversos designs incríveis.",
+  "module.landingpage.howitworks.step2.title": "Personalize",
+  "module.landingpage.howitworks.step2.description": "Adicione o nome, idade e uma mensagem especial para o aniversariante.",
+  "module.landingpage.howitworks.step3.title": "Receba o Link e o QR Code",
+  "module.landingpage.howitworks.step3.description": "Receba o link do seu site por e-mail junto com um QR code para compartilhar facilmente.",
+  "module.landingpage.howitworks.step4.title": "Compartilhe e Comemore",
+  "module.landingpage.howitworks.step4.description": "Envie o link e o QR code para familiares e amigos e celebre juntos!"
 }

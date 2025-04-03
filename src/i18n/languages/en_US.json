@@ -44,5 +44,16 @@
   "module.landingpage.pricing.benefit.photos": "Add up to 4 Photos",
   "module.landingpage.pricing.benefit.qr": "QR Code Sharing",
   "module.landingpage.pricing.basic.button": "Get Started Now",
-  "module.landingpage.pricing.premium.button": "Get the Best Deal"
+  "module.landingpage.pricing.premium.button": "Get the Best Deal",
+  "module.landingpage.howitworks.title": "How It Works",
+  "module.landingpage.howitworks.subtitle": "Follow these simple steps to create an unforgettable birthday surprise",
+  "module.landingpage.howitworks.step": "Step",
+  "module.landingpage.howitworks.step1.title": "Choose a Theme",
+  "module.landingpage.howitworks.step1.description": "Select from multiple beautiful designs.",
+  "module.landingpage.howitworks.step2.title": "Personalize It",
+  "module.landingpage.howitworks.step2.description": "Add the recipient’s name, age, and a special message.",
+  "module.landingpage.howitworks.step3.title": "Get Your Link & QR Code",
+  "module.landingpage.howitworks.step3.description": "Receive your website link via email along with a QR code for easy sharing.",
+  "module.landingpage.howitworks.step4.title": "Share & Celebrate",
+  "module.landingpage.howitworks.step4.description": "Send the link and QR code to family & friends to enjoy the celebration!"
 }
