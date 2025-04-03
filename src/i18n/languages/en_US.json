@@ -17,5 +17,12 @@
   "module.checkout.preview.dear": "Dear",
   "module.checkout.preview.loading.theme": "Loading your birthday template...",
   "module.checkout.preview.no.theme.selected": "No theme selected yet",
-  "module.checkout.preview.instructions": "Choose a birthday template to preview it here 🎉"
+  "module.checkout.preview.instructions": "Choose a birthday template to preview it here 🎉",
+
+  "shared.component.footer.rights": "HappyBirthday. All rights reserved.",
+  "shared.component.footer.terms": "Terms of Service",
+  "shared.component.footer.privacy": "Privacy Policy",
+  "shared.component.footer.contact": "Contact Us",
+  "shared.component.navigation.home": "🎉 HappyBirthday",
+  "shared.component.button.create": "Create My Site"
 }

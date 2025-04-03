@@ -17,5 +17,12 @@
   "module.checkout.preview.dear": "",
   "module.checkout.preview.loading.theme": "Carregando seu modelo...",
   "module.checkout.preview.no.theme.selected": "Nenhum tema selecionado",
-  "module.checkout.preview.instructions": "Escolha um modelo para visualizar aqui 🎉"
+  "module.checkout.preview.instructions": "Escolha um modelo para visualizar aqui 🎉",
+
+  "shared.component.footer.rights": "HappyBirthday. All rights reserved.",
+  "shared.component.footer.terms": "Termos de Serviço",
+  "shared.component.footer.privacy": "Política de Privacidade",
+  "shared.component.footer.contact": "Fale Conosco",
+  "shared.component.navigation.home": "🎉 HappyBirthday",
+  "shared.component.button.create": "Criar meu Site"
 }
