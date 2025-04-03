@@ -29,7 +29,7 @@
           v-model="age"
           type="number"
           min="1"
-          placeholder="Enter age"
+          :placeholder="$t('module.checkout.form.placeholder.age')"
           class="input"
           required
         />
@@ -42,7 +42,7 @@
         <input
           v-model="email"
           type="email"
-          placeholder="email@example.com"
+          :placeholder="$t('module.checkout.form.placeholder.email')"
           class="input"
           required
         />
@@ -56,7 +56,7 @@
           {{ $t('module.checkout.form.message') }}
         </label>
         <textarea
-          placeholder="Write a special message"
+          :placeholder="$t('module.checkout.form.placeholder.message')"
           class="input h-24"
           v-model="message"
         />
