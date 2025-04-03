@@ -2,18 +2,21 @@
   <section class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:px-12 py-32">
     <div class="max-w-lg text-center lg:text-left">
       <h1 class="text-4xl lg:text-5xl font-extrabold text-[#2D3436] leading-tight">
-        The Easiest Way to Create a <br> Stunning Birthday Website!
+        {{ $t('module.landingpage.hero.headline.line1') }} <br />
+        {{ $t('module.landingpage.hero.headline.line2') }}
       </h1>
       <p class="text-lg text-[#555] my-6">
-        Surprise your loved ones with a <span class="font-bold">personalized</span> birthday page, featuring heartfelt messages, photos, custom themes, and easy sharing.  
-        <span class="text-blue-500 font-semibold">No coding required!</span>
+        {{ $t('module.landingpage.hero.description.part1') }}
+        <span class="font-bold">{{ $t('module.landingpage.hero.description.bold') }}</span>
+        {{ $t('module.landingpage.hero.description.part2') }}
+        <span class="text-blue-500 font-semibold">{{ $t('module.landingpage.hero.description.highlight') }}</span>
       </p> 
-      <CTAButton label="Create My Site" variant="secondary" />
+      <CTAButton :label="$t('shared.component.button.create')" variant="secondary" />
     </div>
 
     <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
       <img 
-        alt="Birthday Website Preview"
+        :alt="$t('module.landingpage.hero.image.alt')"
         class="w-3/4 lg:w-96 drop-shadow-lg rounded-xl"
       >
     </div>

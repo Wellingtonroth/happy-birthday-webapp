@@ -55,5 +55,12 @@
   "module.landingpage.howitworks.step3.title": "Get Your Link & QR Code",
   "module.landingpage.howitworks.step3.description": "Receive your website link via email along with a QR code for easy sharing.",
   "module.landingpage.howitworks.step4.title": "Share & Celebrate",
-  "module.landingpage.howitworks.step4.description": "Send the link and QR code to family & friends to enjoy the celebration!"
+  "module.landingpage.howitworks.step4.description": "Send the link and QR code to family & friends to enjoy the celebration!",
+  "module.landingpage.hero.headline.line1": "The Easiest Way to Create a",
+  "module.landingpage.hero.headline.line2": "Stunning Birthday Website!",
+  "module.landingpage.hero.description.part1": "Surprise your loved ones with a ",
+  "module.landingpage.hero.description.bold": "personalized",
+  "module.landingpage.hero.description.part2": " birthday page, featuring heartfelt messages, photos, custom themes, and easy sharing.",
+  "module.landingpage.hero.description.highlight": "No coding required!",
+  "module.landingpage.hero.image.alt": "Birthday Website Preview"
 }
