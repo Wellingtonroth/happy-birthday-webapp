@@ -1,5 +1,5 @@
 {
-  "module.checkout.form.title": "Conclua sua compra",
+  "module.checkout.form.title": "Informações do Pedido",
   "module.checkout.form.name": "Nome do destinatário",
   "module.checkout.form.name.characters.limit": "Você atingiu o limite de 50 caracteres.",
   "module.checkout.form.age": "Idade do destinatário",
@@ -12,7 +12,7 @@
   "module.checkout.form.upload.image": "Enviar imagens (Máx: 4)",
   "module.checkout.form.choose.image": "Escolha até 4 imagens",
   "module.checkout.form.select.theme": "Selecione um tema",
-  "module.checkout.form.placeholder.email": "email@exemplo.com",
+  "module.checkout.form.placeholder.email": "Email válido",
   "module.checkout.form.placeholder.age": "Digite a idade",
   "module.checkout.form.placeholder.message": "Escreva uma mensagem especial",  
   "module.checkout.form.checkout.button": "Finalizar compra",
