@@ -29,6 +29,11 @@
   "module.checkout.toast.order.failed": "Falha ao criar o pedido.",
   "module.checkout.toast.generic.error": "Algo deu errado. Tente novamente.",
   "module.checkout.toast.success": "Pedido criado com sucesso!",
+  "module.checkout.pending.title": "Quase lá!",
+  "module.checkout.pending.description": "Estamos apenas esperando a confirmação do seu pagamento.",
+  "module.checkout.pending.subtext": "Assim que for confirmado, você será redirecionado automaticamente.",
+  "module.checkout.pending.cta": "Atualizar página",
+  "module.checkout.pending.information": "Ao finalizar o pagamento, acesse o link que você recebeu no seu e-mail.",
 
   "shared.component.footer.rights": "HappyBirthday. Todos os Direitos Reservados.",
   "shared.component.footer.terms": "Termos de Serviço",
