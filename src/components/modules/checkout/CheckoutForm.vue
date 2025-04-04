@@ -67,8 +67,8 @@
           <option value="" disabled selected>
             {{ $t('module.checkout.form.select.plan') }}
           </option>
-          <option value="basic">{{ $t('module.checkout.form.select.plan.basic') }} - $4.89</option>
-          <option value="premium">{{ $t('module.checkout.form.select.plan.premium') }} - $6.89</option>
+          <option value="basic">{{ $t('module.checkout.form.select.plan.basic') }}</option>
+          <option value="premium">{{ $t('module.checkout.form.select.plan.premium') }}</option>
         </select>
       </div>
 
@@ -152,6 +152,9 @@ import { onBeforeMount, ref, watch, computed } from "vue";
 import useCheckout from "../../../composables/useCheckout";
 import { useToast } from '../../../composables/useToast';
 import { validateEmail } from '../../../helpers/emailValidation';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const name = ref("");
 const age = ref("");
@@ -208,27 +211,27 @@ const isEmailInvalid = computed(() => {
 
 const handleCheckout = async () => {
   if (!name.value) {
-    toast("Please add a name.", "warning");
+    toast(t('module.checkout.toast.name.required'), "warning");
     return;
   }
 
   if (!email.value) {
-    toast("Please add a email.", "warning");
+    toast(t('module.checkout.toast.email.required'), "warning");
     return;
   } 
 
   if (isEmailInvalid.value) {
-    toast("Please enter a valid email address.", "error");
+    toast(t('module.checkout.toast.email.invalid'), "error");
     return;
   }
 
   if (!selectedPlan.value) {
-    toast("Please select a plan.", "warning");
+    toast(t('module.checkout.toast.plan.required'), "warning");
     return;
   }
 
   if (!selectedTheme.value) {
-    toast("Please select a theme.", "warning");
+    toast(t('module.checkout.toast.theme.required'), "warning");
     return;
   }
 
@@ -244,7 +247,7 @@ const handleCheckout = async () => {
   try {
     const response = await createOrder(payload);
     if (!response?.orderId) {
-      toast("Failed to create order.", "error");
+      toast(t('module.checkout.toast.order.failed'), "error");
       return;
     }
 
@@ -253,10 +256,10 @@ const handleCheckout = async () => {
       await uploadImages(orderId, selectedImages.value);
     }
 
-    toast("Order created successfully!", "success");
+    toast(t('module.checkout.toast.success'), "success");
   } catch (error) {
     console.error("Order creation failed:", error);
-    toast("Something went wrong. Please try again.", "error");
+    toast(t('module.checkout.toast.generic.error'), "error");
   }
 };
 
