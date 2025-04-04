@@ -13,7 +13,6 @@
           placeholder="John Doe"
           class="input"
           maxlength="50"
-          required
           v-model="name"
         />
         <p v-if="isNameAtMaxLength" class="text-sm text-red-500 mt-1">
@@ -31,7 +30,6 @@
           min="1"
           :placeholder="$t('module.checkout.form.placeholder.age')"
           class="input"
-          required
         />
       </div>
 
@@ -44,7 +42,6 @@
           type="email"
           :placeholder="$t('module.checkout.form.placeholder.email')"
           class="input"
-          required
         />
         <p v-if="isEmailInvalid" class="text-sm text-red-500 mt-1">
           {{ $t('module.checkout.form.valid.email') }}
@@ -66,7 +63,7 @@
         <label class="block text-gray-700 font-medium">
           {{ $t('module.checkout.form.select.plan') }}
         </label>
-        <select class="input" required v-model="selectedPlan">
+        <select class="input" v-model="selectedPlan">
           <option value="" disabled selected>
             {{ $t('module.checkout.form.select.plan') }}
           </option>
@@ -153,6 +150,8 @@
 <script setup>
 import { onBeforeMount, ref, watch, computed } from "vue";
 import useCheckout from "../../../composables/useCheckout";
+import { useToast } from '../../../composables/useToast';
+import { validateEmail } from '../../../helpers/emailValidation';
 
 const name = ref("");
 const age = ref("");
@@ -173,6 +172,8 @@ const {
   setOrder,
   templates,
 } = useCheckout();
+
+const { toast } = useToast();
 
 const selectTheme = (theme) => {
   selectedTheme.value = theme;
@@ -202,24 +203,32 @@ const removeImage = (index) => {
 const isNameAtMaxLength = computed(() => name.value.length >= nameMaxLength);
 
 const isEmailInvalid = computed(() => {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return email.value && !emailPattern.test(email.value);
+  return validateEmail(email.value);
 });
 
-
 const handleCheckout = async () => {
-  if (!selectedTheme.value) {
-    alert("Please select a theme.");
+  if (!name.value) {
+    toast("Please add a name.", "warning");
+    return;
+  }
+
+  if (!email.value) {
+    toast("Please add a email.", "warning");
+    return;
+  } 
+
+  if (isEmailInvalid.value) {
+    toast("Please enter a valid email address.", "error");
     return;
   }
 
   if (!selectedPlan.value) {
-    alert("Please select a plan.");
+    toast("Please select a plan.", "warning");
     return;
   }
 
-  if (isEmailInvalid.value) {
-    alert("Please enter a valid email address.");
+  if (!selectedTheme.value) {
+    toast("Please select a theme.", "warning");
     return;
   }
 
@@ -235,7 +244,7 @@ const handleCheckout = async () => {
   try {
     const response = await createOrder(payload);
     if (!response?.orderId) {
-      alert("Failed to create order.");
+      toast("Failed to create order.", "error");
       return;
     }
 
@@ -244,13 +253,12 @@ const handleCheckout = async () => {
       await uploadImages(orderId, selectedImages.value);
     }
 
-    alert("Order created successfully!");
+    toast("Order created successfully!", "success");
   } catch (error) {
     console.error("Order creation failed:", error);
-    alert("Something went wrong. Please try again.");
+    toast("Something went wrong. Please try again.", "error");
   }
 };
-
 
 watch([name, age, email, message, selectedTheme, selectedPlan, imagePreviews], () => {
   setOrder({
